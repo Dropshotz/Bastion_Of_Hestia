@@ -50,7 +50,6 @@ ckey: Dropshotz
 character_name: David Thunderwing
 item_path: /obj/item/weapon/storage/box/fluff/david_thunderwing
 }
-
 # ######## E CKEYS
 # ######## F CKEYS
 # ######## G CKEYS
@@ -93,42 +92,6 @@ item_path: /obj/item/weapon/storage/box/fluff/gahgrr_raharf
 # ######## S CKEYS
 # ######## T CKEYS
 # ######## U CKEYS
-{
-ckey: UnleashedMana
-character_name: Zeke Vin'cir
-item_path: /obj/item/weapon/storage/box/fluff/zeke_vincir
-}
-{
-ckey: UnleashedMana
-character_name: Lucerna
-item_path: /obj/item/weapon/storage/box/fluff/lucerna
-}
-{
-ckey: UnleashedMana
-character_name: Eviriik Vin'cir
-item_path: /obj/item/weapon/storage/box/fluff/eviriik_vincir
-}
-{
-ckey: UnleashedMana
-character_name: Eravik Vessi
-item_path: /obj/item/weapon/storage/box/fluff/eravik_vessi
-}
-{
-ckey: UnleashedMana
-character_name: Ike Eio'ni
-item_path: /obj/item/weapon/storage/box/fluff/ike_eioni
-}
-{
-ckey: UnleashedMana
-character_name: David
-item_path: /obj/item/weapon/storage/box/fluff/david
-}
-{
-ckey: UnleashedMana
-character_name: Ragna Carvel
-item_path: /obj/item/weapon/storage/box/fluff/ragna_carvel
-}
-
 # ######## V CKEYS
 {
 ckey: vukfarkas
