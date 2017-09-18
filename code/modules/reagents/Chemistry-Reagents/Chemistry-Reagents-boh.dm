@@ -6,9 +6,8 @@ datum
 			id = "benzilate"
 			description = "Grey... goo? This smells like hot acid. Consuming this likely wouldn't be good for your health."
 			taste_description = "raw iron"
-			metabolism = REM * 0.2
-			overdose = REAGENTS_OVERDOSE * 1
 			taste_mult = 0.4
+			metabolism = REM * 2.5
 			color = "#929292"
 
 		phenethylamine
@@ -52,6 +51,59 @@ datum
 		return
 	var/drug_strength = 12
 	if(alien == IS_SKRELL)
-		drug_strength = drug_strength * 0.8
+		drug_strength = drug_strength * 0.6
 	M.make_dizzy(drug_strength)
 	M.Confuse(drug_strength * 14)
+	M.adjustOxyLoss(25 * removed)
+	M.sleeping += 1
+
+
+/obj/item/weapon/reagent_containers/pill/benzilate
+	name = "Benzilate pill"
+	desc = "You probably shouldn't swallow this."
+	icon_state = "pill2"
+
+/obj/item/weapon/reagent_containers/pill/benzilate/New()
+	..()
+	reagents.add_reagent("benzilate", 50)
+
+
+/obj/item/weapon/reagent_containers/pill/phenethylamine
+	name = "Phenethylamine pill"
+	desc = "Smells like... lilacs?"
+	icon_state = "pill5"
+
+/obj/item/weapon/reagent_containers/pill/phenethylamine/New()
+	..()
+	reagents.add_reagent("phenethylamine", 50)
+
+
+// PILLS THAT WE PROBABLY SHOULDN'T HAVE AAAAAAAAAA
+
+/obj/item/weapon/storage/pill_bottle/benzilate
+	name = "bottle of Benzilate pills"
+	desc = "This just hurts to look at with how many words of caution are scrawled on the lable. Better eat all of 'em!"
+
+/obj/item/weapon/storage/pill_bottle/benzilate/New()
+	..()
+	new /obj/item/weapon/reagent_containers/pill/benzilate( src )
+	new /obj/item/weapon/reagent_containers/pill/benzilate( src )
+	new /obj/item/weapon/reagent_containers/pill/benzilate( src )
+	new /obj/item/weapon/reagent_containers/pill/benzilate( src )
+	new /obj/item/weapon/reagent_containers/pill/benzilate( src )
+	new /obj/item/weapon/reagent_containers/pill/benzilate( src )
+	new /obj/item/weapon/reagent_containers/pill/benzilate( src )
+
+/obj/item/weapon/storage/pill_bottle/phenethylamine
+	name = "bottle of Phenethylamine pills"
+	desc = "Looks like someone drew a happy face on the label, replacing whatever was previously present."
+
+/obj/item/weapon/storage/pill_bottle/phenethylamine/New()
+	..()
+	new /obj/item/weapon/reagent_containers/pill/phenethylamine( src )
+	new /obj/item/weapon/reagent_containers/pill/phenethylamine( src )
+	new /obj/item/weapon/reagent_containers/pill/phenethylamine( src )
+	new /obj/item/weapon/reagent_containers/pill/phenethylamine( src )
+	new /obj/item/weapon/reagent_containers/pill/phenethylamine( src )
+	new /obj/item/weapon/reagent_containers/pill/phenethylamine( src )
+	new /obj/item/weapon/reagent_containers/pill/phenethylamine( src )

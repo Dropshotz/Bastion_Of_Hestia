@@ -163,6 +163,12 @@
 	name = "rifle magazine (7.62mm)"
 	path =/obj/item/ammo_magazine/m762
 	hidden = 1
+
+/datum/category_item/autolathe/arms/rifle_762sp
+	name = "rifle magazine (7.62mm Specialized)"
+	path =/obj/item/ammo_magazine/mr2487
+	hidden = 1
+
 /*
 /datum/category_item/autolathe/arms/rifle_small_762
 	name = "rifle magazine (7.62mm)"

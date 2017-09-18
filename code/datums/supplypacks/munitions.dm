@@ -29,7 +29,9 @@
 			/obj/item/weapon/gun/projectile/sec/flash,
 			/obj/item/ammo_magazine/m45/flash,
 			/obj/item/weapon/gun/projectile/shotgun/doublebarrel/flare,
-			/obj/item/weapon/storage/box/flashshells
+			/obj/item/weapon/storage/box/flashshells,
+			/obj/item/weapon/gun/projectile/trueflaregun,
+			/obj/item/weapon/storage/box/flaredp
 			)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/weapon
@@ -170,3 +172,13 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Beanbag shells"
 	access = null
+
+/datum/supply_packs/munitions/jhen
+	name = "Jhen weapon shipment"
+	contains = list(
+			/obj/item/weapon/gun/projectile/carbine/jhenc2487 = 2,
+			/obj/item/weapon/gun/projectile/colt/fluff/ccg2492 = 2)
+	cost = 100
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "Jhen weapon crate"
+	access = access_armory

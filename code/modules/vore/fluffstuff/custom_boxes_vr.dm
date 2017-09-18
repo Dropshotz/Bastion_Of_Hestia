@@ -56,15 +56,13 @@
 
 // Vuk Farkas - Vuk Farkas...
 /obj/item/weapon/storage/box/fluff/vuk_farkas
-	name = "Vuk Farkas' Personal Kit"
-	desc = "A kit containing Vuk Farkas' equipment."
+	name = "A heavy box"
+	desc = "This rattles sharply when you touch it. Best not to mess with it."
 	has_items = list(
 //		/obj/item/fluff/permit/vukfarkas,
 		/obj/item/weapon/gun/projectile/trueflaregun,
 		/obj/item/clothing/accessory/storage/black_vest,
-			/obj/item/ammo_casing/flaredp,
-			/obj/item/ammo_casing/flaredp,
-			/obj/item/ammo_casing/flaredp,
+		/obj/item/weapon/storage/box/flaredp_half,
 		/obj/item/weapon/extinguisher/mini)
 
 
@@ -110,8 +108,18 @@
 		/obj/item/clothing/accessory/storage/black_vest/fluff/netra_vest,
 		/obj/item/weapon/storage/belt/fluff/netra_belt,
 		/obj/item/weapon/stamp/centcomm,
-		/obj/item/clothing/gloves/fluff/netra_gloves)
+		/obj/item/clothing/gloves/fluff/netra_gloves,
+		/obj/item/weapon/storage/pill_bottle/phenethylamine)
 
+
+// DragonKo: Solar Attia
+/obj/item/weapon/storage/box/fluff/solar
+	name = "Solar Attia's Personal Kit"
+	desc = "A kit containing Attia's equipment."
+	has_items = list(
+		/obj/item/clothing/under/fluff/solar_uniform,
+		/obj/item/clothing/glasses/omnihud/med/fluff/solar,
+		/obj/item/device/communicator/fluff/solar)
 //----------------------------------------------------|
 // bwoincognito:Tasald Corlethian
 /obj/item/weapon/storage/box/fluff/tasald

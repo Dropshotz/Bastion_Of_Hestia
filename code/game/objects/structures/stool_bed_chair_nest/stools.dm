@@ -147,3 +147,12 @@ var/global/list/stool_cache = list() //haha stool
 		remove_padding()
 	else
 		..()
+
+
+
+//---- Joke hat. Time to be a cock about everything. ----
+/obj/item/weapon/stool/cuban
+	name = "ultra rare hat"
+	desc = "an ultra rare hat. It commands a certain respect."
+	icon = 'icons/mob/head.dmi'
+	icon_state = "petehat"

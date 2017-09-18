@@ -345,10 +345,10 @@
 	var/mouth_covered = 0
 	var/obj/item/safe_thing = null
 
-	var/effective_strength = 5
+	var/effective_strength = 15
 
 	if(alien == IS_SKRELL)	//Larger eyes means bigger targets.
-		effective_strength = 8
+		effective_strength = 25
 
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
@@ -403,7 +403,7 @@
 	if(dose == metabolism)
 		M << "<span class='danger'>You feel like your insides are burning!</span>"
 	else
-		M.apply_effect(4, AGONY, 0)
+		M.apply_effect(15, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	if(istype(M, /mob/living/carbon/slime))

@@ -670,3 +670,29 @@
 	..()
 	for(var/i = 1 to 7)
 		new /obj/item/seeds/ambrosiadeusseed(src)
+
+
+/obj/item/weapon/storage/box/dna
+	name = "DNA Chip Box"
+	icon_state = "disk_kit"
+
+/obj/item/weapon/storage/box/dna/New()
+	..()
+	new /obj/item/dnalockingchip(src)
+	new /obj/item/dnalockingchip(src)
+	new /obj/item/dnalockingchip(src)
+	new /obj/item/dnalockingchip(src)
+	new /obj/item/dnalockingchip(src)
+	new /obj/item/dnalockingchip(src)
+	new /obj/item/dnalockingchip(src)
+
+/*
+/obj/item/weapon/storage/box/zipties
+	name = "box of spare zipties"
+	desc = "A box full of zipties."
+	icon_state = "ziptie"
+
+/obj/item/weapon/storage/box/handcuffs/zipties/New()
+	..()
+	for(var/i = 1 to 7)
+		new /obj/item/weapon/handcuffs/zipties(src)*/

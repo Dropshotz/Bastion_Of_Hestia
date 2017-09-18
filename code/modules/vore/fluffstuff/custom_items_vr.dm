@@ -37,8 +37,29 @@
 	icon_state = "netra_headset"
 	icon_override = 'icons/boh/fluff.dmi'
 	item_state = "netra_headset_m"
-//You guys are on your own trying to fix this one --Joan Risu
+//You guys are on your own trying to fix this one --Joan Risu | It's fucked. -Carl
 
+/obj/item/device/communicator/fluff/solar
+	name = "gold backed communicator"
+	desc = "A personal device used to enable long range dialog between two people. This specific device appears to be far too fancy, as if the owner is overcompensating for something..."
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "solar_communicator"
+
+/obj/item/clothing/glasses/omnihud/med/fluff/solar
+	name = "fancy medical hud"
+	desc = "A far too fancy looking hud."
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "solar_healthhud"
+	icon_override = 'icons/boh/onmobfluff.dmi'
+	item_state = "solar_heathhud"
+
+	mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
+		if(..())
+			if(H.ckey != "dragonko")
+				H << "<span class='danger'>You probably shouldn't wear this. Looks like it'll cut into your skull or something.</span>"
+				return 0
+			else
+				return 1
 //---------
 
 //For general use

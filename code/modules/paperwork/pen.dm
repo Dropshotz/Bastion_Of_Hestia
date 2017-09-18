@@ -37,7 +37,7 @@
 
 /obj/item/weapon/pen/fountain
 	desc = "A well made fountain pen."
-	icon_state = "pen_fountain"
+	icon_state = "blue"
 
 /obj/item/weapon/pen/multi
 	desc = "It's a pen with multiple colors of ink!"

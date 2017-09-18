@@ -217,8 +217,8 @@
 
 //trueflaregun projectile
 /obj/item/projectile/energy/flash/flaredp
-	damage = 5
-	agony = 45
+	damage = 2
+	agony = 15
 	icon_state = "bullet"
 	flash_range = 1
 	brightness = 15

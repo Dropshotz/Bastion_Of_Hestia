@@ -135,7 +135,17 @@
 	icon_override = 'icons/boh/onmobfluff.dmi'
 	item_state = "kilanogloves_m"
 	armor = list(melee = 5, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	//Don't copy the names of the item you used as a base. You should always give your items, icons, etc unique names. --Joan Risu
+
+// DragonKo - Solar Attia
+/obj/item/clothing/under/fluff/solar_uniform
+	name = "Fancy Suit"
+	desc = "A very fancy gold flecked suit. Looks worn in."
+
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "solar_uniform"
+
+	icon_override = 'icons/boh/onmobfluff.dmi'
+	item_state = "solar_uniform-on"
 
 //----
 
@@ -245,6 +255,37 @@
 		original_size = null
 		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
 */
+
+/obj/item/weapon/rig/light/ccsec
+	name = "security suit control module"
+	desc = "A lighter, decently armoured rig for security work."
+	icon_state = "ninja_rig"
+	suit_type = "light suit"
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/cell)
+	armor = list(melee = 65, bullet = 15, laser = 65, energy = 15, bomb = 25, bio = 0, rad = 0)
+	emp_protection = 10
+	slowdown = 0
+	item_flags = STOPPRESSUREDAMAGE | THICKMATERIAL
+	offline_slowdown = 0
+	offline_vision_restriction = 0
+
+	chest_type = /obj/item/clothing/suit/space/rig/light/ccsec
+	helm_type =  /obj/item/clothing/head/helmet/space/rig/light/ccsec
+	boot_type =  /obj/item/clothing/shoes/magboots/rig/light/ccsec
+	glove_type = /obj/item/clothing/gloves/gauntlets/rig/light/ccsec
+
+/obj/item/clothing/suit/space/rig/light/ccsec
+	name = "suit"
+	breach_threshold = 18 //comparable to voidsuits
+
+/obj/item/clothing/gloves/gauntlets/rig/light/ccsec
+	name = "gloves"
+
+/obj/item/clothing/shoes/magboots/rig/light/ccsec
+	name = "shoes"
+
+/obj/item/clothing/head/helmet/space/rig/light/ccsec
+	name = "hood"
 
 //--------------------
 

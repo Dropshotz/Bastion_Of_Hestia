@@ -2041,11 +2041,11 @@ area/space/atmosalert()
 	name = "Security Post - Science"
 	icon_state = "checkpoint1"
 
-/area/security/vacantoffice
-	name = "\improper Vacant Office"
+/area/security/magistrate
+	name = "\improper Security - Magistrate"
 	icon_state = "security"
 
-/area/security/vacantoffice2
+/area/security/vacantoffice
 	name = "\improper Vacant Office"
 	icon_state = "security"
 

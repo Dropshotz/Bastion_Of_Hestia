@@ -181,3 +181,41 @@ var/last_chew = 0
 	icon = 'icons/obj/bureaucracy.dmi'
 	breakouttime = 200
 	cuff_type = "duct tape"
+
+
+// Do to: Properly add these.
+/*
+/obj/item/weapon/handcuffs/zipties
+	name = "zipties"
+	desc = "Plastic, disposable zipties that can be used to restrain temporarily but are destroyed after use."
+	icon_state = "cuff_white"
+	breakouttime = 450 //Deciseconds = 45s
+	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	var/trashtype = /obj/item/weapon/handcuffs/zipties/used
+
+/obj/item/weapon/handcuffs/zipties/cyborg/attack(mob/living/carbon/C, mob/user)
+	if(isrobot(user))
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			if(!(H.get_organ("l_hand") || H.get_organ("r_hand")))
+				to_chat(user, "<span class='warning'>How do you suggest handcuffing someone with no hands?</span>")
+				return
+		if(!C.handcuffed)
+			playsound(loc, 'sound/weapons/cablecuff.ogg', 30, 1, -2)
+			C.visible_message("<span class='danger'>[user] is trying to put zipties on [C]!</span>", \
+								"<span class='userdanger'>[user] is trying to put zipties on [C]!</span>")
+			if(do_mob(user, C, 30))
+				if(!C.handcuffed)
+					C.handcuffed = new /obj/item/weapon/handcuffs/zipties/used(C)
+					update_icon(user)
+					to_chat(user, "<span class='notice'>You handcuff [C].</span>")
+					add_logs(user, C, "ziptie-cuffed")
+			else
+				to_chat(user, "<span class='warning'>You fail to handcuff [C].</span>")
+
+/obj/item/weapon/handcuffs/zipties/used
+	desc = "A pair of broken zipties."
+	icon_state = "cuff_white_used"
+
+/obj/item/weapon/handcuffs/zipties/used/attack()
+	return*/

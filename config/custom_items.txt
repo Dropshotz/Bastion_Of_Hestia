@@ -46,6 +46,11 @@
 # ######## C CKEYS
 # ######## D CKEYS
 {
+ckey: dragonko
+character_name: Solar Attia
+item_path: /obj/item/weapon/storage/box/fluff/solar
+}
+{
 ckey: Dropshotz
 character_name: David Thunderwing
 item_path: /obj/item/weapon/storage/box/fluff/david_thunderwing

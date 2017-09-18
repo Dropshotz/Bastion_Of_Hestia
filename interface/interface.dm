@@ -6,7 +6,7 @@
 	if(config.wikiurl)
 		if(query)
 			if(config.wikisearchurl)
-				var/output = replacetext(config.wikisearchurl, "%s", url_encode(query))	
+				var/output = replacetext(config.wikisearchurl, "%s", url_encode(query))
 				src << link(output)
 			else
 				src << "<span class='warning'> The wiki search URL is not set in the server configuration.</span>"
@@ -25,7 +25,7 @@
 			return
 		src << link(config.forumurl)
 	else
-		src << "<span class='warning'>The forum URL is not set in the server configuration.</span>"
+		src << "<span class='warning'>If you're seeing this, we don't yet have a forum. Visit the Discord instead.</span>"
 		return
 
 /client/verb/rules()
@@ -38,7 +38,7 @@
 			return
 		src << link(config.rulesurl)
 	else
-		src << "<span class='danger'>The rules URL is not set in the server configuration.</span>"
+		src << "<span class='danger'>Visit the Discord for the ruleset.</span>"
 	return
 
 /client/verb/map()
@@ -51,7 +51,7 @@
 			return
 		src << link(config.mapurl)
 	else
-		src << "<span class='danger'>The map URL is not set in the server configuration.</span>"
+		src << "<span class='danger'>If you're seeing this, we don't yet have a map for view.</span>"
 	return
 
 /client/verb/github()

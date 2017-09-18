@@ -751,7 +751,7 @@ something, make sure it's not in one of the other lists.*/
 				prob(1);/obj/item/clothing/accessory/holster/waist,
 				prob(1);/obj/item/clothing/accessory/holster/armpit,
 				prob(2);/obj/item/clothing/ears/earmuffs,
-				prob(2);/obj/item/weapon/handcuffs,)
+				prob(2);/obj/item/weapon/handcuffs)
 
 /obj/random/maintenance/medical
 /*Maintenance loot list. This one is for around medical areas*/

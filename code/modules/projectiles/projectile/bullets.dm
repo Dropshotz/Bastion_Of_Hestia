@@ -326,3 +326,13 @@
 	edge = 1
 	check_armour = "melee"
 	armor_penetration = 50
+
+//carbine variant
+/obj/item/projectile/bullet/rifle/rubber/jhen762sp
+	name = "rubber bullet"
+	damage = 12
+	agony = 90
+	embed_chance = 0
+	edge = 1
+	check_armour = "melee"
+	armor_penetration = 75

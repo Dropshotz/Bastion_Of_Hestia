@@ -912,14 +912,15 @@
 /obj/item/weapon/gun/projectile/trueflaregun
 	name = "flare gun"
 	desc = "Mostly legal. Great for bird suppression."
-	icon_state = "flaregun"
-	item_state = "flaregun"
+	icon_state = "flaregunp"
+	item_state = "flaregunp"
 	load_method = SINGLE_CASING
 	handle_casings = CYCLE_CASINGS
 	max_shells = 1
 	force = 10
 	flags =  CONDUCT
 	caliber = "12g"
+	fire_sound = 'sound/weapons/bb.ogg'
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/flaredp
 	w_class = ITEMSIZE_SMALL
@@ -933,18 +934,28 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 530)
 	projectile_type = /obj/item/projectile/energy/flash/flaredp
 
-/*
+
+/obj/item/weapon/storage/box/flaredp_half
+	name = "box of flare shells"
+	desc = "A box full of flare shells. It has instructions on safe use... as if."
+	icon_state = "flaredp_box"
+
+/obj/item/weapon/storage/box/flaredp_half/New()
+	..()
+	for(var/i = 1 to 4)
+		new /obj/item/ammo_casing/flaredp(src)
+
+
 /obj/item/weapon/storage/box/flaredp
-	name = "box of dual purpose flare shells"
-	desc = "The underside of the box has a set of instructions on proper safe use... as if."
+	name = "box of flare shells"
+	desc = "A box full of flare shells. It has instructions on safe use... as if."
 	icon_state = "flaredp_box"
 
 /obj/item/weapon/storage/box/flaredp/New()
 	..()
-	for(var/i = 1 to 12)
-		var/obj/item/ammo_casing/flaredp/S = new(src)
-*/
-
+	for(var/i = 1 to 7)
+		new /obj/item/ammo_casing/flaredp(src)
+//---------
 //PFC Honor weapon - Mosin copy
 /*
 /obj/item/weapon/gun/projectile/shotgun/pump/rifle/pfchonor
@@ -988,7 +999,7 @@
 		icon_state = "pfchonor_proper-empty"
 
 /*/obj/item/weapon/gun/projectile/SVD/verb/scope()
-	set category = "Object"
+	set category = "Object"--
 	set name = "Use Scope"
 	set popup_menu = 1
 
@@ -1022,11 +1033,18 @@
 	desc = "A NanoTrasen Jhen G2492 self defence weapon. Modified to accept only specialized .45 ammunition."
 	magazine_type = /obj/item/ammo_magazine/mr2492
 	allowed_magazines = list(/obj/item/ammo_magazine/mr2492)
-	icon_state = "jhen"
+	icon_state = "jhencolt"
 	caliber = ".45sp"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	fire_sound = 'sound/weapons/xm8.ogg'
 	load_method = MAGAZINE
+
+/obj/item/weapon/gun/projectile/colt/fluff/ccg2492/update_icon()
+	..()
+	if(ammo_magazine) //Probably isn't required, but it doesn't work otherwise.
+		icon_state = "jhencolt"
+	else
+		icon_state = "jhencolt-empty"
 
 /obj/item/ammo_magazine/mr2492
 	name = "magazine (.45 Specialized)"
@@ -1044,3 +1062,43 @@
 	caliber = ".45sp"
 	icon_state = "am-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/rubber/jhen45sp
+
+//-----CC Carbine-----\\
+
+/obj/item/weapon/gun/projectile/carbine/jhenc2487
+	name = "Jhen C2487"
+	desc = "The Jhen C2487 is a lightweight carbine manufactured by NanoTrasen subsidiaries, and issued to security forces aboard NanoTrasen vessels and stations. Whispered to be a knockoff. Modified to fire specialized less-than-lethal 7.62 ammunition."
+	magazine_type = /obj/item/ammo_magazine/mr2487
+	allowed_magazines = list(/obj/item/ammo_magazine/mr2487)
+	icon_state = "jhencarbine" //Gotta change this at some point. -Carl
+	caliber = "7.62sp"
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 2)
+	fire_sound = 'sound/weapons/svd_shot.ogg'
+	load_method = MAGAZINE
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/magdrop_1.ogg'
+
+/obj/item/weapon/gun/projectile/carbine/jhenc2487/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "jhencarbine"
+	else
+		icon_state = "jhencarbine-empty"
+
+/obj/item/ammo_magazine/mr2487
+	name = "rifle magazine (7.62mm Specialized)"
+	desc = "This magazine probably wouldn't fit a normal 7.62 caliber weapon, as it appears to be modified against that. NT branding is visible on the underside."
+	icon = 'icons/obj/ammo_vr.dmi'
+	icon_state = "jhencarb"
+	mag_type = MAGAZINE
+	caliber = "7.62sp"
+	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	ammo_type = /obj/item/ammo_casing/r2487
+	max_ammo = 16
+	multiple_sprites = 1
+
+/obj/item/ammo_casing/r2487
+	desc = "A specialized 7.62 'rubber' bullet casing."
+	caliber = "7.62sp"
+	icon_state = "pfc_rubber_rifle-casing"
+	projectile_type = /obj/item/projectile/bullet/rifle/rubber/jhen762sp

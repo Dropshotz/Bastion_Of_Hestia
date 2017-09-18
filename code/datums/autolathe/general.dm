@@ -122,3 +122,8 @@
 	name = "handcuffs"
 	path =/obj/item/weapon/handcuffs
 	hidden = 1
+/*
+/datum/category_item/autolathe/general/handcuffs/zipties
+	name = "zipties"
+	path =/obj/item/weapon/handcuffs/zipties
+	hidden = 1*/
