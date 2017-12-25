@@ -107,6 +107,12 @@ var/global/list/latejoin_pad   = list()
 	invisibility = 101
 	height = 3
 
+/obj/effect/landmark/map_data/lounge_legion
+	name = "Legion"
+	desc = "Probably important."
+	invisibility = 101
+	height = 3
+
 /obj/turbolift_map_holder/lounge
 	name = "Lounge Climber"
 	depth = 3
@@ -141,5 +147,3 @@ var/global/list/latejoin_pad   = list()
 	lift_floor_label = "Sector C"
 	lift_floor_name = "Laboratories, Command"
 	lift_announce_str = "Now arriving at Sector C: Test Labs and Control Facilities."
-
-// Areas | GENERIC ONLY
