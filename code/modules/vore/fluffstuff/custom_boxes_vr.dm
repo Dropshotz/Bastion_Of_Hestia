@@ -48,11 +48,18 @@
 	name = "Gahgrr Raharf's Personal Kit"
 	desc = "A kit containing Raharf's equipment."
 	has_items = list(
-		/obj/item/fluff/permit/nothingbutcarl_2,
-		/obj/item/weapon/gun/projectile/colt/fluff/ccg2492,
-		/obj/item/ammo_magazine/mr2492,
-		/obj/item/ammo_magazine/mr2492,
-		/obj/item/clothing/accessory/holster/armpit)
+//		/obj/item/fluff/permit/nothingbutcarl_2,
+//		/obj/item/weapon/gun/projectile/colt/fluff/ccg2492,
+//		/obj/item/ammo_magazine/mr2492,
+//		/obj/item/ammo_magazine/mr2492,
+//		/obj/item/clothing/accessory/holster/armpit,
+		/obj/item/clothing/shoes/boots/winter/command/gahgrr_boots,
+		/obj/item/clothing/accessory/storage/black_vest/fluff/gahgrr_vest,
+		/obj/item/weapon/storage/belt/fluff/gahgrr_belt,
+		/obj/item/clothing/gloves/fluff/gahgrr_gloves,
+		/obj/item/clothing/under/dress/fluff/gahgrr_dress,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/gahgrr,
+		)
 
 // Vuk Farkas - Vuk Farkas...
 /obj/item/weapon/storage/box/fluff/vuk_farkas

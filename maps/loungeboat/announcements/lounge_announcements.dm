@@ -1,23 +1,23 @@
 //Cactus, Speedbird, Dynasty, oh my
 
-var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
+var/datum/lore/anno_controller/ann = new/datum/lore/anno_controller
 
-/datum/lore/atc_controller
-	var/delay_max = 25 MINUTES			//How long between ATC traffic, max.  Default is 25 mins.
-	var/delay_min = 40 MINUTES			//How long between ATC traffic, min.  Default is 40 mins.
+/datum/lore/anno_controller
+	var/delay_max = 15 MINUTES			//How long between ATC traffic, max.  Default is 25 mins.
+	var/delay_min = 25 MINUTES			//How long between ATC traffic, min.  Default is 40 mins.
 	var/backoff_delay = 5 MINUTES		//How long to back off if we can't talk and want to.  Default is 5 mins.
 	var/next_message					//When the next message should happen in world.time
 	var/force_chatter_type				//Force a specific type of messages
 
-	var/squelched = 1					//If ATC is squelched currently || Squelched by default; Lounge uses a separate system. -Carl
+	var/squelched = 0					//If ATC is squelched currently
 
-/datum/lore/atc_controller/New()
+/datum/lore/anno_controller/New()
 	spawn(10 SECONDS) //Lots of lag at the start of a shift.
 		msg("New shift beginning, resuming traffic control.")
 	next_message = world.time + rand(delay_min,delay_max)
 	process()
 
-/datum/lore/atc_controller/proc/process()
+/datum/lore/anno_controller/proc/process()
 	if(world.time >= next_message)
 		if(squelched)
 			next_message = world.time + backoff_delay
@@ -28,31 +28,31 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 	spawn(1 MINUTE) //We don't really need high-accuracy here.
 		process()
 
-/datum/lore/atc_controller/proc/msg(var/message,var/sender)
+/datum/lore/anno_controller/proc/msg(var/message,var/sender)
 	ASSERT(message)
-	global_announcer.autosay("[message]", sender ? sender : "[using_map.station_short] Space Control")
+	global_announcer.autosay("[message]", sender ? sender : "[using_map.station_short] Sovereign Colony Announcements System")
 
-/datum/lore/atc_controller/proc/reroute_traffic(var/yes = 1)
+/datum/lore/anno_controller/proc/reroute_traffic(var/yes = 1)
 	if(yes)
 		if(!squelched)
-			msg("Rerouting traffic away from [using_map.station_name].")
+			msg("[using_map.station_name] setting all incoming communications to essential only.")
 		squelched = 1
 	else
 		if(squelched)
-			msg("Resuming normal traffic routing around [using_map.station_name].")
+			msg("Allowing all commnication traffic for [using_map.station_name].")
 		squelched = 0
 
-/datum/lore/atc_controller/proc/shift_ending(var/evac = 0)
-	msg("Automated Shuttle departing [using_map.station_name] for [using_map.dock_name] on routine transfer route.","NT Automated Shuttle")
+/datum/lore/anno_controller/proc/shift_ending(var/evac = 0)
+	msg("Automated transport departing [using_map.station_name] for [using_map.dock_name] on routine transfer route.","Automated Transport")
 	sleep(5 SECONDS)
-	msg("Automated Shuttle, cleared to complete routine transfer from [using_map.station_name] to [using_map.dock_name].")
+	msg("Automated transport, cleared to complete routine transfer from [using_map.station_name] to [using_map.dock_name].")
 
-/datum/lore/atc_controller/proc/random_convo()
+/datum/lore/anno_controller/proc/random_convo()
 	var/one = pick(loremaster.organizations) //These will pick an index, not an instance
 	var/two = pick(loremaster.organizations)
 
-	var/datum/lore/anno/source = loremaster.organizations[one] //Resolve to the instances
-	var/datum/lore/anno/dest = loremaster.organizations[two]
+	var/datum/lore/organization/source = loremaster.organizations[one] //Resolve to the instances
+	var/datum/lore/organization/dest = loremaster.organizations[two]
 
 	//Let's get some mission parameters
 	var/owner = source.short_name					//Use the short name
@@ -69,18 +69,18 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 
 	//First response is 'yes', second is 'no'
 	var/requests = list("[using_map.station_short] transit clearance" = list("permission for transit granted", "permission for transit denied, contact regional on 953.5"),
-						"planetary flight rules" = list("authorizing planetary flight rules", "denying planetary flight rules right now due to traffic"),
-						"special flight rules" = list("authorizing special flight rules", "denying special flight rules, not allowed for your traffic class"),
+						"planetary flight rules" = list("authorizing planetary flight rules", "denying planetary flight rules right now due to dangerous solar weather"),
+						"special flight rules" = list("authorizing special flight rules", "denying special flight rules, not allowed for your credential class"),
 						"current solar weather info" = list("sending you the relevant information via tightbeam", "cannot fulfill your request at the moment"),
 						"nearby traffic info" = list("sending you current traffic info", "no available info in your area"),
 						"remote telemetry data" = list("sending telemetry now", "no uplink from your ship, recheck your uplink and ask again"),
 						"refueling information" = list("sending refueling information now", "no fuel for your ship class in this sector"),
 						"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
-						"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now"),
+						"current system starcharts" = list("credentials match IFF ping, transmitting current starcharts", "your request is denied, await further instructions"),
 						"permission to engage FTL" = list("permission to engage FTL granted, good day", "permission denied, wait for current traffic to pass"),
-						"permission to transit system" = list("permission to transit granted, good day", "permission denied, wait for current traffic to pass"),
-						"permission to depart system" = list("permission to depart granted, good day", "permission denied, wait for current traffic to pass"),
-						"permission to enter system" = list("good day, permission to enter granted", "permission denied, wait for current traffic to pass"),
+						"permission to transit system" = list("permission to transit granted, switch to regional 924.7 for instructions and await escort", "permission denied, switch to regional 926.1 and await further instructions"),
+						"permission to depart system" = list("credentials match ship class, permission to depart granted", "permission denied, credentials appear false; await ship examination by dispatched security team"),
+						"permission to enter system" = list("permission to enter granted, switch to regional 846.9 and await broadcast for docking coordinates", "permission denied, IFF tags you as Sol; security team dispatched"),
 						)
 
 	//Random chance things for variety

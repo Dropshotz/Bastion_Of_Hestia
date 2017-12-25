@@ -194,7 +194,7 @@
 		return this_mob
 	else
 		return mob
-
+/*
 /obj/random/outside_mob/spawn_item()
 	..()
 	var/datum/map_z_level/z_level = get_z_level_datum(spawned_thing)
@@ -210,4 +210,4 @@
 	M.life_disabled = 1
 	for(var/i = 1 to 20) //wander the mobs around so they aren't always in the same spots
 		step_rand(M)
-		sleep(2)
+		sleep(2)*/

@@ -1,3 +1,5 @@
+//Unrequired. -Carl
+/*
 /mob/living/simple_animal/hostile/alien/proc/disable_for_wilderness()
 	var/datum/map_z_level/z_level = get_z_level_datum(src)
 	if(!istype(z_level, /datum/map_z_level/tether/wilderness))
@@ -29,4 +31,4 @@
 
 /mob/living/simple_animal/hostile/alien/queen/large/wilderness_spawn/New()
 	..()
-	disable_for_wilderness()
+	disable_for_wilderness()*/

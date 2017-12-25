@@ -35,13 +35,22 @@
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/lore/atc_controller/ATC
+//	var/datum/lore/atc_controller/ATC
+	var/datum/lore/anno_controller/ANN
 	var/datum/announcement/priority/crew_announcement = new
 
+/*
 /obj/machinery/computer/communications/New()
 	..()
 	ATC = atc
 	crew_announcement.newscast = 1
+*/
+
+/obj/machinery/computer/communications/New()
+	..()
+	ANN = ann
+	crew_announcement.newscast = 1
+
 
 /obj/machinery/computer/communications/process()
 	if(..())
@@ -132,8 +141,10 @@
 		if("messagelist")
 			src.currmsg = 0
 			src.state = STATE_MESSAGELIST
-		if("toggleatc")
-			src.ATC.squelched = !src.ATC.squelched
+/*		if("toggleatc")
+			src.ATC.squelched = !src.ATC.squelched*/
+		if("toggleann")
+			src.ANN.squelched = !src.ANN.squelched
 		if("viewmessage")
 			src.state = STATE_VIEWMESSAGE
 			if (!src.currmsg)
@@ -315,7 +326,8 @@
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>Log In</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+//			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ANN.squelched ? "Enable" : "Disable"] ANN Relay</A> \]"
 		if(STATE_CALLSHUTTLE)
 			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=main'>Cancel</A> \]"
 		if(STATE_CANCELSHUTTLE)
@@ -379,7 +391,8 @@
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-callshuttle'>Call Emergency Shuttle</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
-			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+//			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleann'>[ANN.squelched ? "Enable" : "Disable"] ANN Relay</A> \]"
 		if(STATE_CALLSHUTTLE)
 			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=ai-callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-main'>Cancel</A> \]"
 		if(STATE_MESSAGELIST)

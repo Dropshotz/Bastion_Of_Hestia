@@ -167,95 +167,116 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "cedrickhat_mob"
 
-// This damn smock is borked. Ignore. -Carl
-/*
-/obj/item/clothing/under/fluff/thunderwing_smock
-	name = "bluespace smock"
-	desc = "This smock glows a brilliant bright blue."
-	icon = 'icons/mob/species/seromi/uniform.dmi'
-	icon_state = "seromi_bluespace"
-//	icon_override = 'icons/mob/species/seromi/uniform.dmi'
-	item_state = "seromi_yellow_s"
-	hides_bulges = TRUE
-	var/original_size
 
-/obj/item/clothing/under/fluff/thunderwing_smock/verb/resize()
-	set name = "Adjust Size"
-	set category = "Object"
-	set src in usr
-	bluespace_size(usr)
+//NothingButCarl: Gahgrr Raharf
+/obj/item/clothing/suit/storage/hooded/wintercoat/gahgrr
+	name = "Embroidered Red Officer Coat"
+	desc = "A Red and Gold Winter Coat, The Colors of the station Security force, along with some extra padding! This has Warden markings on the shoulders, along with the name 'Gahgrr' inscribed beneath them."
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "coatgahgrr"
+	item_state_slots = list(slot_r_hand_str = "coatgahgrr", slot_l_hand_str = "coatgahgrr")
+
+	icon_override = 'icons/boh/fluff.dmi'
+	item_state = "coatgahgrr_mob"
+	armor = list(melee = 15, bullet = 5, laser = 0,energy = 0, bomb = 5, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/storage/hooded/wintercoat/gahgrr/ui_action_click()
+	ToggleHood_gahgrr()
+
+/obj/item/clothing/suit/storage/hooded/wintercoat/gahgrr/equipped(mob/user, slot)
+	if(slot != slot_wear_suit)
+		RemoveHood_gahgrr()
 	..()
 
-/obj/item/clothing/under/fluff/thunderwing_smock/proc/bluespace_size(mob/usr as mob)
-	if (!ishuman(usr))
-		return
+/obj/item/clothing/suit/storage/hooded/wintercoat/gahgrr/proc/RemoveHood_gahgrr()
+	icon_state = "coatgahgrr"
+	item_state = "coatgahgrr_mob"
+	suittoggled = 0
+	if(ishuman(hood.loc))
+		var/mob/living/carbon/H = hood.loc
+		H.unEquip(hood, 1)
+		H.update_inv_wear_suit()
+	hood.loc = src
 
-	var/mob/living/carbon/human/H = usr
+/obj/item/clothing/suit/storage/hooded/wintercoat/gahgrr/proc/ToggleHood_gahgrr()
+	if(!suittoggled)
+		if(ishuman(loc))
+			var/mob/living/carbon/human/H = src.loc
+			if(H.wear_suit != src)
+				H << "<span class='warning'>You must be wearing [src] to put up the hood!</span>"
+				return
+			if(H.head)
+				H << "<span class='warning'>You're already wearing something on your head!</span>"
+				return
+			else
+				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
+				suittoggled = 1
+				icon_state = "coatgahgrr_t"
+				item_state = "coatgahgrr_mob_t"
+				H.update_inv_wear_suit()
+	else
+		RemoveHood_gahgrr()
 
-	if (H.stat || H.restrained())
-		return
+/obj/item/clothing/under/dress/fluff/gahgrr_dress
+	name = "Red Officer Dress"
+	desc = "A red and gold Patterned Dress, the colors of NanoTrasen Security, along with a nametag bearing 'Gahgrr' above the left breast. The dress appears to be infused with a strong ballistic weave of sorts."
 
-	if (src != H.w_uniform)
-		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
-		return
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "gahgrr_suit"
 
-	var/choice = alert(H,"Change which way?","Mass Alteration","Size Up","Cancel","Size Down")
-	if(choice == "Cancel")
-		return FALSE
+	icon_override = 'icons/boh/onmobfluff.dmi'
+	item_state = "gahgrr_suit_mob" //Don't add the "_s" in the icon's name to the reference here, otherwise it's going to read it as "_s_s". The actual icon in the .dmi should have "_s" though. --Joan Risu
 
-	//Check AGAIN because we accepted user input which is blocking.
-	if (src != H.w_uniform)
-		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
-		return
+	species_restricted = null
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 25, bullet = 35, laser = 25,energy = 25, bomb = 5, bio = 0, rad = 0)
 
-	if (isnull(H.size_multiplier))
-		to_chat(H,"<span class='warning'>The uniform panics and corrects your apparently microscopic size.</span>")
-		H.resize(RESIZE_NORMAL)
-		H.update_icons()
-		return
+/obj/item/clothing/shoes/boots/winter/command/gahgrr_boots
+	name = "Red Officer boots"
+	desc = "Some red and Gold Colored Boots, the colors of the NT Security team."
 
-	var/new_size
-	if (choice == "Size Up")
-		switch(H.size_multiplier)
-			if(RESIZE_BIG to RESIZE_HUGE)
-				new_size = RESIZE_HUGE
-			if(RESIZE_NORMAL to RESIZE_BIG)
-				new_size = RESIZE_BIG
-			if(RESIZE_SMALL to RESIZE_NORMAL)
-				new_size = RESIZE_NORMAL
-			if((0 - INFINITY) to RESIZE_TINY)
-				new_size = RESIZE_SMALL
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "gahgrr_winterboots"
+	icon_override = 'icons/boh/onmobfluff.dmi'
+	item_state = "gahgrr_winterboots" //You don't really have to specify this since the code is just gonna use the override and the icon_state. I don't fucking know why, whoever coded it this way is a fucking idiot. --Joan Risu
+	item_icons = null
+	armor = list(melee = 5, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
-	else if (choice == "Size Down")
-		switch(H.size_multiplier)
-			if(RESIZE_HUGE to INFINITY)
-				new_size = RESIZE_BIG
-			if(RESIZE_BIG to RESIZE_HUGE)
-				new_size = RESIZE_NORMAL
-			if(RESIZE_NORMAL to RESIZE_BIG)
-				new_size = RESIZE_SMALL
-			if((0 - INFINITY) to RESIZE_NORMAL)
-				new_size = RESIZE_TINY
+/obj/item/clothing/accessory/storage/black_vest/fluff/gahgrr_vest
+	name = "Red Officer vest"
+	desc = "A red and gold Camoflauged Webbing Vest, The Colors of the NT Security team."
 
-	if(new_size)
-		if(new_size != H.size_multiplier)
-			if(!original_size)
-				original_size = H.size_multiplier
-			H.resize(new_size)
-			H.visible_message("<span class='warning'>The space around [H] distorts as they change size!</span>","<span class='notice'>The space around you distorts as you change size!</span>")
-		else
-			to_chat(H,"<span class='warning'>That's as far as you can resize in that direction!</span>")
-			return
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "vest_gahgrr"
+	icon_override = 'icons/boh/onmobfluff.dmi'
+	//No need for an item_state for accessories, just specify the icon_override and the code will look for the name specified in icon_state for the item_state. --Joan Risu
+	armor = list(melee = 5, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
-/obj/item/clothing/under/fluff/thunderwing_smock/mob_can_unequip(mob/M, slot, disable_warning = 0)
-	. = ..()
-	if(. && ishuman(M) && original_size)
-		var/mob/living/carbon/human/H = M
-		H.resize(original_size)
-		original_size = null
-		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
-*/
+/obj/item/weapon/storage/belt/fluff/gahgrr_belt
+	name = "Red Officer belt"
+	desc = "A red and gold belt, The Colors of the NT Security team."
 
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "swat_gahgrr"
+
+	icon_override = 'icons/boh/onmobfluff.dmi'
+	item_state = "swat_gahgrr_m"
+
+	storage_slots = 9
+
+/obj/item/clothing/gloves/fluff/gahgrr_gloves
+	name = "Red Officer gloves"
+	desc = "Some red and Gold Colored Gloves, the colors of the NT Security team."
+
+	icon = 'icons/boh/fluff.dmi'
+	icon_state = "gahgrrgloves"
+
+	icon_override = 'icons/boh/onmobfluff.dmi'
+	item_state = "gahgrrgloves_m"
+	armor = list(melee = 5, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+
+
+// Random BoH fluff
 /obj/item/weapon/rig/light/ccsec
 	name = "security suit control module"
 	desc = "A lighter, decently armoured rig for security work."
