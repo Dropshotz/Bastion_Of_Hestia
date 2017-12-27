@@ -30,7 +30,7 @@ var/datum/lore/anno_controller/ann = new/datum/lore/anno_controller
 
 /datum/lore/anno_controller/proc/msg(var/message,var/sender)
 	ASSERT(message)
-	global_announcer.autosay("[message]", sender ? sender : "[using_map.station_short] Sovereign Colony Announcements System")
+	global_announcer.autosay("[message]", sender ? sender : "[using_map.station_short] Defence System")
 
 /datum/lore/anno_controller/proc/reroute_traffic(var/yes = 1)
 	if(yes)
@@ -39,7 +39,7 @@ var/datum/lore/anno_controller/ann = new/datum/lore/anno_controller
 		squelched = 1
 	else
 		if(squelched)
-			msg("Allowing all commnication traffic for [using_map.station_name].")
+			msg("Allowing all incoming commnications for [using_map.station_name].")
 		squelched = 0
 
 /datum/lore/anno_controller/proc/shift_ending(var/evac = 0)
@@ -78,9 +78,9 @@ var/datum/lore/anno_controller/ann = new/datum/lore/anno_controller
 						"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
 						"current system starcharts" = list("credentials match IFF ping, transmitting current starcharts", "your request is denied, await further instructions"),
 						"permission to engage FTL" = list("permission to engage FTL granted, good day", "permission denied, wait for current traffic to pass"),
-						"permission to transit system" = list("permission to transit granted, switch to regional 924.7 for instructions and await escort", "permission denied, switch to regional 926.1 and await further instructions"),
+						"permission to transit system" = list("permission to transit granted, switch to channel 924.7 for instructions and await escort", "permission denied, switch to channel 926.1 and await further instructions"),
 						"permission to depart system" = list("credentials match ship class, permission to depart granted", "permission denied, credentials appear false; await ship examination by dispatched security team"),
-						"permission to enter system" = list("permission to enter granted, switch to regional 846.9 and await broadcast for docking coordinates", "permission denied, IFF tags you as Sol; security team dispatched"),
+						"permission to enter system" = list("permission to enter granted, switch to channel 846.9 and await broadcast for docking coordinates", "permission denied, IFF tags you as Sol; security team dispatched"),
 						)
 
 	//Random chance things for variety

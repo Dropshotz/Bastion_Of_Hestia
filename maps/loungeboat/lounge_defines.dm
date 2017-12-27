@@ -42,10 +42,10 @@
 	station_name  = "SC: Dagon"
 	station_short = "Dagon"
 	dock_name     = "Virchow: S14-North"
-	boss_name     = "Sovereign Colony Dagon of Krevallo-Virchow"
-	boss_short    = "Dagon"
-	company_name  = "Spyra Defence and Command"
-	company_short = "SDC"
+	boss_name     = "Spyra Defence and Command"
+	boss_short    = "SDC"
+	company_name  = "Sovereign Colony Dagon of Krevallo-Virchow"
+	company_short = "Dagon"
 	starsys_name  = "Krevallo-Virchow"
 
 	shuttle_docked_message = "The scheduled Orange Line tram to the %dock_name% has arrived. It will depart in approximately %ETD%."
@@ -127,3 +127,20 @@
 	var/datum/map_z_level/z_level = using_map.zlevels["[T.z]"]
 	if(z_level)
 		return z_level
+
+/datum/map/lounge/get_map_levels(var/srcz, var/long_range = TRUE)
+	if (long_range && (srcz in map_levels))
+		return map_levels
+	else if (srcz == Z_LEVEL_HUB)
+		return list() // Nothing on transit!
+	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SURFACE_HIGH)
+		return list(
+			Z_LEVEL_SURFACE_LOW,
+			Z_LEVEL_SURFACE_MID,
+			Z_LEVEL_SURFACE_HIGH/*,
+			Z_LEVEL_SPACE_LOW,
+			Z_LEVEL_SPACE_MID,
+			Z_LEVEL_SPACE_HIGH*/
+			)
+	else
+		return ..()

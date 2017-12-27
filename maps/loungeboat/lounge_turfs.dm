@@ -89,3 +89,17 @@ SPYRA_TURF_CREATE(/turf/simulated/mineral)
 /obj/effect/transit/light
 	icon = 'icons/turf/transit_128.dmi'
 	icon_state = "tube1-2"
+
+// - - - - -
+// Spyra Desert Turf
+
+/turf/simulated/floor/outdoors/sand/
+	name = "desert sand"
+	desc = " It’s coarse, rough, irritating and it gets everywhere."
+	icon_state = "desert"
+	icon = 'icons/turf/desert.dmi'
+
+/turf/simulated/floor/outdoors/sand/New()
+	..()
+	if(prob(10))
+		overlays += "desert[rand(0,4)]"

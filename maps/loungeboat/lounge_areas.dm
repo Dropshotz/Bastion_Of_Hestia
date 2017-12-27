@@ -63,3 +63,38 @@
 	name = "\improper Surface Checkpoint Screening"
 /area/lounge/surfacebase/security/interrogation
 	name = "\improper Surface Checkpoint Interrogation"
+
+
+/area/lounge/surfacebase/transport
+	icon_state = "security"
+/area/lounge/surfacebase/transport/shuttlepad
+	name = "\improper Airtight Hanger"
+
+
+
+
+
+
+
+
+
+
+// Areas | SPECIAL ONLY
+
+/area/turbolift/l_surface/level1
+	name = "surface (level 1)"
+	lift_floor_label = "Sector A"
+	lift_floor_name = "Tram, Security"
+	lift_announce_str = "Now arriving at Sector A: Tram and Security Facilities."
+
+/area/turbolift/l_surface/level2
+	name = "surface (level 2)"
+	lift_floor_label = "Sector B"
+	lift_floor_name = "Engineering, Civil"
+	lift_announce_str = "Now arriving at Sector B: Engineering, Atmospherics, Civil Facilities and Housing."
+
+/area/turbolift/l_surface/level3
+	name = "surface (level 3)"
+	lift_floor_label = "Sector C"
+	lift_floor_name = "Laboratories, Command"
+	lift_announce_str = "Now arriving at Sector C: Test Labs and Control Facilities."

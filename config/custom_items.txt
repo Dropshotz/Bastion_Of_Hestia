@@ -45,16 +45,6 @@
 # ######## B CKEYS
 # ######## C CKEYS
 # ######## D CKEYS
-{
-ckey: dragonko
-character_name: Solar Attia
-item_path: /obj/item/weapon/storage/box/fluff/solar
-}
-{
-ckey: Dropshotz
-character_name: David Thunderwing
-item_path: /obj/item/weapon/storage/box/fluff/david_thunderwing
-}
 # ######## E CKEYS
 # ######## F CKEYS
 # ######## G CKEYS
@@ -63,32 +53,12 @@ item_path: /obj/item/weapon/storage/box/fluff/david_thunderwing
 # ######## J CKEYS
 # ######## K CKEYS
 # ######## L CKEYS
-{
-ckey: Lezus_Konrad
-character_name: Alden Bluetenberger
-item_path: /obj/item/weapon/storage/box/fluff/alden_bluetenberger
-}
-{
-ckey: LezusKonrad
-character_name: Alden Bluetenberger
-item_path: /obj/item/weapon/storage/box/fluff/alden_bluetenberger
-}
 # ######## M CKEYS
 # ######## N CKEYS
 {
 ckey: NetraKyram
 character_name: Ne'tra Ky'ram
 item_path: /obj/item/weapon/storage/box/fluff/netra
-}
-{
-ckey: NothingButCarl
-character_name: Cedrick Marois
-item_path: /obj/item/weapon/storage/box/fluff/cedrick_marois
-}
-{
-ckey: NothingButCarl
-character_name: Gahgrr Raharf
-item_path: /obj/item/weapon/storage/box/fluff/gahgrr_raharf
 }
 # ######## O CKEYS
 # ######## P CKEYS
@@ -98,16 +68,6 @@ item_path: /obj/item/weapon/storage/box/fluff/gahgrr_raharf
 # ######## T CKEYS
 # ######## U CKEYS
 # ######## V CKEYS
-{
-ckey: vukfarkas
-character_name: Vuk Farkas
-item_path: /obj/item/weapon/storage/box/fluff/vuk_farkas
-}
-{
-ckey: vukfarkas
-character_name: ZER0
-item_path: /obj/item/weapon/storage/box/fluff/vuk_farkas
-}
 # ######## W CKEYS
 # ######## X CKEYS
 # ######## Y CKEYS

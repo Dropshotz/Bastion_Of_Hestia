@@ -39,6 +39,10 @@
 		user.ghostize()
 		despawn_occupant(user)
 
+
+
+
+
 // - - - -
 
 //Spawn Shuttle
@@ -71,12 +75,9 @@ var/global/list/latejoin_pad   = list()
 	icon = 'icons/turf/flooring/maglevs.dmi'
 	icon_state = "maglevup"
 
-	var/area/shock_area_l = /area/lounge/surfacebase/shuttlepad
+	var/area/shock_area_l = /area/lounge/surfacebase/transport/shuttlepad
 
-// - -
-/area/lounge/surfacebase/shuttlepad
-	name = "\improper Airtight Hanger"
-	icon_state = "dk_yellow"
+
 // - -
 
 /turf/simulated/floor/maglev/clamp/initialize()
@@ -99,12 +100,14 @@ var/global/list/latejoin_pad   = list()
 
 
 
+
+
+
+
+// - - - - -
 // Landmark and Lift
 
 /obj/effect/landmark/map_data/lounge
-	name = "Base"
-	desc = "Probably important."
-	invisibility = 101
 	height = 3
 
 /obj/effect/landmark/map_data/lounge_legion

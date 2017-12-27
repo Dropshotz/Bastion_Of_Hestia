@@ -9,8 +9,8 @@
 
 // The following is included to bypass Tether excess, while also allowing for a few other things that'll more than likely be used.
 	#include "excess/tether_things_l.dm"
-//	#include "excess/tether_shuttle_defs_l.dm"
-//	#include "excess/tether_shuttles_l.dm"
+	#include "excess/tether_shuttle_defs_l.dm"
+	#include "excess/tether_shuttles_l.dm"
 	#include "excess/tether_areas_l.dm"
 
 // - - - - -
