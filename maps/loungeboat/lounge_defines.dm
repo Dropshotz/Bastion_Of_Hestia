@@ -1,11 +1,11 @@
 //Atmosphere properties
-#define SPYRA_ONE_ATMOSPHERE	92.4 //kPa
+#define SPYRA_ONE_ATMOSPHERE	101.00 //kPa
 #define SPYRA_AVG_TEMP	313.15 //kelvin
 
-#define SPYRA_PER_N2		50.50 //percent
+#define SPYRA_PER_N2		0.00 //percent
 #define SPYRA_PER_O2		0.00
 #define SPYRA_PER_N2O		0.00 //Currently no capacity to 'start' a turf with this. See turf.dm
-#define SPYRA_PER_CO2		49.50
+#define SPYRA_PER_CO2		0.00
 #define SPYRA_PER_PHORON	0.00
 
 //Math only beyond this point
@@ -26,9 +26,12 @@
 #define Z_LEVEL_SURFACE_LOW					1
 #define Z_LEVEL_SURFACE_MID					2
 #define Z_LEVEL_SURFACE_HIGH				3
-#define Z_LEVEL_MISC						4
-#define Z_LEVEL_HUB							5
-#define Z_LEVEL_DESERT						6
+#define Z_LEVEL_LEGION_LOW					4
+#define Z_LEVEL_LEGION_MID					5
+#define Z_LEVEL_LEGION_HIGH					6
+#define Z_LEVEL_MISC						7
+#define Z_LEVEL_HUB							8
+#define Z_LEVEL_DESERT						9
 
 
 /datum/map/lounge
@@ -41,7 +44,7 @@
 
 	station_name  = "SC: Dagon"
 	station_short = "Dagon"
-	dock_name     = "Virchow: S14-North"
+	dock_name     = "SDC: S14-North"
 	boss_name     = "Spyra Defence and Command"
 	boss_short    = "SDC"
 	company_name  = "Sovereign Colony Dagon of Krevallo-Virchow"
@@ -106,6 +109,22 @@
 	name = "Surface 3"
 	base_turf = /turf/simulated/open
 
+/datum/map_z_level/lounge/station/legion_low
+	z = Z_LEVEL_LEGION_LOW
+	name = "Legion 1"
+	base_turf = /turf/space
+
+/datum/map_z_level/lounge/station/legion_mid
+	z = Z_LEVEL_LEGION_MID
+	name = "Legion 2"
+	base_turf = /turf/simulated/open
+
+/datum/map_z_level/lounge/station/legion_high
+	z = Z_LEVEL_LEGION_HIGH
+	name = "Legion 3"
+	base_turf = /turf/simulated/open
+
+
 /datum/map_z_level/lounge/hub
 	z = Z_LEVEL_HUB
 	name = "CentCom"
@@ -133,14 +152,14 @@
 		return map_levels
 	else if (srcz == Z_LEVEL_HUB)
 		return list() // Nothing on transit!
-	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_SURFACE_HIGH)
+	else if (srcz >= Z_LEVEL_SURFACE_LOW && srcz <= Z_LEVEL_LEGION_HIGH)
 		return list(
 			Z_LEVEL_SURFACE_LOW,
 			Z_LEVEL_SURFACE_MID,
-			Z_LEVEL_SURFACE_HIGH/*,
-			Z_LEVEL_SPACE_LOW,
-			Z_LEVEL_SPACE_MID,
-			Z_LEVEL_SPACE_HIGH*/
+			Z_LEVEL_SURFACE_HIGH,
+			Z_LEVEL_LEGION_LOW,
+			Z_LEVEL_LEGION_MID,
+			Z_LEVEL_LEGION_HIGH
 			)
 	else
 		return ..()

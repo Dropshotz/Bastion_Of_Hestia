@@ -15,7 +15,6 @@ var/datum/planet/spyra/planet_spyra = null
 						Z_LEVEL_SURFACE_LOW,
 						Z_LEVEL_SURFACE_MID,
 						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_MISC,
 						Z_LEVEL_HUB,
 						Z_LEVEL_DESERT
 						)
@@ -118,17 +117,15 @@ var/datum/planet/spyra/planet_spyra = null
 		WEATHER_RAIN		= new /datum/weather/spyra/rain(),
 		WEATHER_STORM		= new /datum/weather/spyra/storm(),
 //		WEATHER_HAIL		= new /datum/weather/spyra/hail(),
-		WEATHER_BLOOD_MOON	= new /datum/weather/spyra/blood_moon()
+		WEATHER_BLOOD_MOON	= new /datum/weather/spyra/blood_moon(),
+		WEATHER_SANDSTORM	= new /datum/weather/spyra/sandstorm()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 30,
 		WEATHER_OVERCAST	= 30,
-//		WEATHER_LIGHT_SNOW	= 20,
-//		WEATHER_SNOW		= 5,
-//		WEATHER_BLIZZARD	= 5,
 		WEATHER_RAIN		= 5,
 		WEATHER_STORM		= 2.5,
-//		WEATHER_HAIL		= 2.5
+		WEATHER_SANDSTORM	= 32.5
 		)
 
 datum/weather/spyra
@@ -298,3 +295,37 @@ datum/weather/spyra
 	transition_chances = list(
 		WEATHER_BLOODMOON = 100
 		)
+
+
+// Odd Below
+/datum/weather/spyra/sandstorm
+	name = "sandstorm"
+	icon_state = "sandstorm_temp" //Gotta change this at some point. -Carl
+	temp_high = 344.15 // 71c
+	temp_low = 313.15  // 40c
+	light_modifier = 0.9
+	light_color = "#ECAC3F"
+	transition_chances = list(
+		WEATHER_CLEAR = 60,
+		WEATHER_OVERCAST = 40
+		)
+
+/datum/weather/spyra/sandstorm/process_effects()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				return // They're indoors.
+
+			var/target_zone = pick(BP_ALL)
+			var/amount_blocked = L.run_armor_check(target_zone, "melee")
+			var/amount_soaked = L.get_armor_soak(target_zone, "melee")
+
+			if(amount_blocked >= 100)
+				return // No need to apply damage.
+
+			if(amount_soaked >= 10)
+				return // No need to apply damage.
+
+			L.apply_damage(rand(5, 10), BRUTE, target_zone, amount_blocked, amount_soaked, used_weapon = "hail")
+			to_chat(L, "<span class='warning'>The small chunks of dust and debris raining down on you [L.can_feel_pain() ? "hurts" : "damages you"]!</span>")

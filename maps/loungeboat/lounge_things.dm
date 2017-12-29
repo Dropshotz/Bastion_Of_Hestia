@@ -111,9 +111,6 @@ var/global/list/latejoin_pad   = list()
 	height = 3
 
 /obj/effect/landmark/map_data/lounge_legion
-	name = "Legion"
-	desc = "Probably important."
-	invisibility = 101
 	height = 3
 
 /obj/turbolift_map_holder/lounge
@@ -130,6 +127,19 @@ var/global/list/latejoin_pad   = list()
 		/area/turbolift/l_surface/level3
 		)
 
+/obj/turbolift_map_holder/legion
+	name = "Legion Climber"
+	depth = 3
+	lift_size_x = 3
+	lift_size_y = 3
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+
+	areas_to_use = list(
+		/area/turbolift/l_legion/level1,
+		/area/turbolift/l_legion/level2,
+		/area/turbolift/l_legion/level3
+		)
 
 // Areas | SPECIAL ONLY
 
@@ -150,3 +160,23 @@ var/global/list/latejoin_pad   = list()
 	lift_floor_label = "Sector C"
 	lift_floor_name = "Laboratories, Command"
 	lift_announce_str = "Now arriving at Sector C: Test Labs and Control Facilities."
+
+
+
+/area/turbolift/l_legion/level1
+	name = "legion (level 1)"
+	lift_floor_label = ""
+	lift_floor_name = ""
+	lift_announce_str = ""
+
+/area/turbolift/l_legion/level2
+	name = "legion (level 2)"
+	lift_floor_label = ""
+	lift_floor_name = ""
+	lift_announce_str = ""
+
+/area/turbolift/l_legion/level3
+	name = "legion (level 3)"
+	lift_floor_label = ""
+	lift_floor_name = ""
+	lift_announce_str = ""

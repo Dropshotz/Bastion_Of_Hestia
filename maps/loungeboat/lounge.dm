@@ -29,6 +29,7 @@
 	#include "lounge-02-misc.dmm"
 	#include "lounge-03-hub.dmm"
 	#include "lounge-04-desert.dmm"
+	#include "lounge-05-legion.dmm"
 
 	#define USING_MAP_DATUM /datum/map/lounge
 

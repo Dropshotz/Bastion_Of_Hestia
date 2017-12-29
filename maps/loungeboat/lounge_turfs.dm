@@ -95,11 +95,11 @@ SPYRA_TURF_CREATE(/turf/simulated/mineral)
 
 /turf/simulated/floor/outdoors/sand/
 	name = "desert sand"
-	desc = " It’s coarse, rough, irritating and it gets everywhere."
+	base_name = "desert sand"
+	desc = "It’s coarse, rough, irritating and it gets everywhere."
+	base_desc = "It’s coarse, rough, irritating and it gets everywhere."
 	icon_state = "desert"
+	base_icon_state = "desert"
 	icon = 'icons/turf/desert.dmi'
-
-/turf/simulated/floor/outdoors/sand/New()
-	..()
-	if(prob(10))
-		overlays += "desert[rand(0,4)]"
+	base_icon = 'icons/turf/desert.dmi'
+	initial_flooring = null
